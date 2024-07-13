@@ -26,7 +26,7 @@ Route::get('/welcome', function () {
 // });
 // Route::get('/test',[TestController::class,'test']);
 
-Route::get('/test',[App\Http\Controllers\TestController::class,'test']);
+Route::get('/test/{id}',[App\Http\Controllers\TestController::class,'test']);
 Route::get('/hello',[TestController::class,'hello']);
 
 Route::get('/about/{id}',function($id){
