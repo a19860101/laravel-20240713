@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>什麼SHOP</title>
+    <title>什麼SHOP - {{$title}} </title>
 </head>
 <body>
     <nav>
@@ -16,7 +16,7 @@
         <a href="#">包包提袋</a>
         <a href="#">居家生活</a>
     </nav>
-    <h1>什麼SHOP 8/8號隆重開幕</h1>
+    <h1>{{ $heading ?? '什麼shop 8/8隆重開幕'}}</h1>
     <div>
         {{$slot}}
     </div>
