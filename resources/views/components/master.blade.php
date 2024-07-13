@@ -17,5 +17,8 @@
         <a href="#">居家生活</a>
     </nav>
     <h1>什麼SHOP 8/8號隆重開幕</h1>
+    <div>
+        {{$slot}}
+    </div>
 </body>
 </html>
