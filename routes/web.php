@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +17,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/welcome', function () {
     return view('welcome');
 });
-Route::get('/test/{id}', function ($id) {
+// Route::get('/test/{id}', function ($id) {
     // return view('test',['id' => $id]);
-    return view('test')->with(['id' => $id,'msg'=>'hello msg']);
+    // return view('test')->with(['id' => $id,'msg'=>'hello msg']);
     // return view('test',compact('id'));
+
     
-});
+// });
+// Route::get('/test',[TestController::class,'test']);
+
+Route::get('/test',[App\Http\Controllers\TestController::class,'test']);
+Route::get('/hello',[TestController::class,'hello']);
+
 Route::get('/about/{id}',function($id){
     return 'about -- '.$id;
 });
