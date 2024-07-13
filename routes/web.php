@@ -25,3 +25,12 @@ Route::get('/test/{id}', function ($id) {
 Route::get('/about/{id}',function($id){
     return 'about -- '.$id;
 });
+Route::get('/',function(){
+    return view('home');
+});
+Route::get('/news',function(){
+    return view('news');
+});
+Route::get('/about',function(){
+    return view('about');
+});
