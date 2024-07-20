@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,3 +51,6 @@ Route::delete('/post/{id}',[PostController::class, 'destroy'])->name('post.delet
 Route::get('/post/{id}/edit',[PostController::class, 'edit'])->name('post.edit');
 Route::patch('/post/{id}',[PostController::class, 'update'])->name('post.update');
 // Route::patch();
+
+
+Route::resource('category', CategoryController::class);
