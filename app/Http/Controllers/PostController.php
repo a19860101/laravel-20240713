@@ -12,8 +12,16 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
-        return view('post.index');
+        //方法一
+        // $posts = DB::select('SELECT * FROM posts');
+
+        //方法二
+        $posts = DB::table('posts')->get();
+        // return $posts;
+
+        // return view('post.index',['posts' => $posts]);
+        // return view('post.index')->with(['posts' => $posts]);
+        return view('post.index',compact('posts'));
     }
 
     /**
