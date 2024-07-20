@@ -11,7 +11,15 @@
     <a href="/post/create">建立文章</a>
     <a href="{{route('post.create')}}">建立文章</a>
 
-    {{$posts}}
+    @foreach($posts as $post)
+    <div>
+        <h2>{{$post->title}}</h2>
+        <div>建立時間:{{$post->created_at}}</div>
+        <div>
+            {{$post->body}}
+        </div>
+    </div>
+    @endforeach
     
 </body>
 </html>
