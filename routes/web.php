@@ -46,6 +46,4 @@ Route::get('/post',[PostController::class,'index'])->name('post.index');
 Route::get('/post/create',[PostController::class,'create'])->name('post.create');
 Route::post('/post',[PostController::class, 'store'])->name('post.store');
 Route::get('/post/{id}',[PostController::class, 'show'])->name('post.show');
-Route::delete('/post/{id}',function($id){
-    return $id;
-})->name('post.delete');
+Route::delete('/post/{id}',[PostController::class, 'destroy'])->name('post.delete');
