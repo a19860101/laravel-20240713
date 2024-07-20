@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        td,th {
+            border: 1px solid #555;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
     <form action="{{route('category.store')}}" method="post">
@@ -19,5 +28,19 @@
         </div>
         <input type="submit" value="新增分類">
     </form>
+    <table>
+        <tr>
+            <th>分類標題</th>
+            <th>分類英文標題</th>
+            <th>建立日期</th>
+        </tr>
+        @foreach($categories as $c)
+        <tr>
+            <td>{{$c->title}}</td>
+            <td>{{$c->slug}}</td>
+            <td>{{$c->created_at}}</td>
+        </tr>
+        @endforeach
+    </table>
 </body>
 </html>
