@@ -33,12 +33,20 @@
             <th>分類標題</th>
             <th>分類英文標題</th>
             <th>建立日期</th>
+            <th>動作</th>
         </tr>
         @foreach($categories as $c)
         <tr>
             <td>{{$c->title}}</td>
             <td>{{$c->slug}}</td>
             <td>{{$c->created_at}}</td>
+            <td>
+                <form action="{{route('category.destroy',$c->id)}}" method="post">
+                    @csrf
+                    @method('delete')
+                    <input type="submit" value="刪除" onclick="return confirm('確認刪除？')">
+                </form>
+            </td>
         </tr>
         @endforeach
     </table>
