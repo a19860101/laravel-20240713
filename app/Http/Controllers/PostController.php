@@ -75,6 +75,9 @@ class PostController extends Controller
     public function edit(string $id)
     {
         //
+        $post = DB::table('posts')->find($id);
+
+        return view('post.edit',compact('post'));
     }
 
     /**
