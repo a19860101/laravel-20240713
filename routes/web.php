@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,6 @@ Route::get('/news',function(){
 Route::get('/about',function(){
     return view('about');
 });
+Route::get('/post',[PostController::class,'index']);
+Route::get('/post/create',[PostController::class,'create']);
+Route::post('/post',[PostController::class, 'store']);
