@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="{{route('category.store')}}" method="post">
         @csrf
         <div>
             <label for="">分類標題</label>

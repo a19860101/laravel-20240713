@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use DB;
 
 class CategoryController extends Controller
 {
@@ -31,6 +32,14 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
+        DB::table('categories')->insert([
+            'title'     => $request->title,
+            'slug'      => $request->slug,
+            'created_at'=> now(),
+            'updated_at'=> now(),
+        ]);
+
+        return redirect()->route('category.index');
     }
 
     /**
