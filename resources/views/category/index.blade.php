@@ -34,12 +34,18 @@
             <th>分類英文標題</th>
             <th>建立日期</th>
             <th>動作</th>
+            <th>動作</th>
         </tr>
         @foreach($categories as $c)
         <tr>
-            <td>{{$c->title}}</td>
-            <td>{{$c->slug}}</td>
-            <td>{{$c->created_at}}</td>
+            <form action="{{route('category.update',$c->id)}}" method="post">
+                @csrf
+                @method('put')
+                <td><input type="text" name="title" value="{{$c->title}}"></td>
+                <td><input type="text" name="slug" value="{{$c->slug}}"></td>
+                <td>{{$c->created_at}}</td>
+                <td><input type="submit" value="更新"></td>
+            </form>
             <td>
                 <form action="{{route('category.destroy',$c->id)}}" method="post">
                     @csrf
