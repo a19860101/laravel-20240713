@@ -18,6 +18,9 @@
         <div>
             {{$post->body}}
         </div>
+        <a href="/post/{{$post->id}}">繼續閱讀</a>
+        <a href="{{route('post.show',['id'=>$post->id])}}">繼續閱讀</a>
+        <a href="{{route('post.show',$post->id)}}">繼續閱讀</a>
     </div>
     @endforeach
     
