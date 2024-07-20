@@ -9,7 +9,8 @@
 <body>
     <h1>建立文章</h1>
     <div>
-        <form action="/post" method="post">
+        {{-- <form action="/post" method="post"> --}}
+        <form action="{{route('post.store')}}" method="post">
             @csrf
             <div>
                 <label for="">文章標題</label>

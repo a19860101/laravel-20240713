@@ -9,6 +9,7 @@
 <body>
     <h1>文章列表</h1>
     <a href="/post/create">建立文章</a>
+    <a href="{{route('post.create')}}">建立文章</a>
     
 </body>
 </html>
