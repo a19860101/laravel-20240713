@@ -10,8 +10,9 @@
     <h1>修改文章</h1>
     <div>
         {{-- <form action="/post" method="post"> --}}
-        <form action="" method="post">
+        <form action="{{route('post.update',$post->id)}}" method="post">
             @csrf
+            @method('patch')
             <div>
                 <label for="">文章標題</label>
                 <input type="text" name="title" value="{{$post->title}}">
