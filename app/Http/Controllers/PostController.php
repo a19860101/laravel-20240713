@@ -60,8 +60,13 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        //
-        return $id;
+        // 方法一
+        // $post = DB::select('SELECT * FROM posts WHERE id = ?',[$id]);
+
+        // 方法二
+        $post = DB::table('posts')->find($id);
+        
+        return view('post.show',compact('post'));
     }
 
     /**
