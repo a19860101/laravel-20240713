@@ -14,7 +14,10 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        $categories = DB::table('categories')->get();
+        // $categories = DB::table('categories')->get();
+        // $categories = Category::all();
+        // $categories = Category::get();
+        $categories = Category::orderBy('id','DESC')->get();
         return view('category.index',compact('categories'));
     }
 
@@ -33,12 +36,33 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
-        DB::table('categories')->insert([
-            'title'     => $request->title,
-            'slug'      => $request->slug,
-            'created_at'=> now(),
-            'updated_at'=> now(),
+        // DB::table('categories')->insert([
+        //     'title'     => $request->title,
+        //     'slug'      => $request->slug,
+        //     'created_at'=> now(),
+        //     'updated_at'=> now(),
+        // ]);
+
+        // 方法一
+        // $category = new Category;
+        // $category->title = $request->title;
+        // $category->slug = $request->slug;
+        // $category->save();
+
+        // 方法二
+        $category = new Category;
+        $category -> fill([
+            'title' => $request->title,
+            'slug'  => $request->slug
         ]);
+        $category->save();
+
+        // 方法三
+        // $category = new Category;
+        // $category->fill($request->all());
+        // $category->save();
+
+        // Category::create($request->all());
 
         return redirect()->route('category.index');
     }
@@ -65,6 +89,15 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         //
+        return $category->id;
+
+        DB::table('categories')->where('id',$category->id)->update([
+            'title' => $request->title,
+            'slug'  => $request->slug,
+            'updated_at' => now()
+        ]);
+        return redirect()->route('category.index');
+
     }
 
     /**
