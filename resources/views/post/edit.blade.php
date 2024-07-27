@@ -18,6 +18,14 @@
                 <input type="text" name="title" value="{{$post->title}}">
             </div>
             <div>
+                <label for="">分類</label>
+                <select name="category_id" id="">
+                    @foreach($categories as $category)
+                    <option value="{{$category->id}}">{{$category->title}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div>
                 <label for="">內文</label>
                 <textarea name="body" id="" cols="30" rows="10">{{$post->body}}</textarea>
             </div>

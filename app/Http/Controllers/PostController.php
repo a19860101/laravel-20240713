@@ -81,8 +81,9 @@ class PostController extends Controller
     {
         //
         $post = DB::table('posts')->find($id);
+        $categories = Category::get();
 
-        return view('post.edit',compact('post'));
+        return view('post.edit',compact('post','categories'));
     }
 
     /**
@@ -91,18 +92,19 @@ class PostController extends Controller
     public function update(Request $request, string $id)
     {
         // 方法一
-        DB::update('UPDATE posts SET title=?,body=?,updated_at=? WHERE id=?',[
-            $request->title,
-            $request->body,
-            now(),
-            $id
-        ]);
+        // DB::update('UPDATE posts SET title=?,body=?,updated_at=? WHERE id=?',[
+        //     $request->title,
+        //     $request->body,
+        //     now(),
+        //     $id
+        // ]);
         
 
         // 方法二
         DB::table('posts')->where('id',$id)->update([
             'title' => $request->title,
             'body' => $request->body,
+            'category_id' => $request->category_id,
             'updated_at' => now(),
         ]);
         return redirect()->route('post.show',$id);
