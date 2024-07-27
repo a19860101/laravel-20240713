@@ -29,7 +29,19 @@
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/category">分類管理</a>
                     </li>
- 
+                    @guest
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/login">登入</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/login">註冊</a>
+                    </li>
+                    @endguest
+                    @auth
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/dashboard">後台管理</a>
+                    </li>
+                    @endauth
                 </ul>
             </div>
         </div>
