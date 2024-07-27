@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TestController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,33 +16,22 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
-Route::get('/welcome', function () {
+Route::get('/', function () {
     return view('welcome');
 });
-// Route::get('/test/{id}', function ($id) {
-    // return view('test',['id' => $id]);
-    // return view('test')->with(['id' => $id,'msg'=>'hello msg']);
-    // return view('test',compact('id'));
 
-    
-// });
-// Route::get('/test',[TestController::class,'test']);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/test/{id}',[App\Http\Controllers\TestController::class,'test']);
-Route::get('/hello',[TestController::class,'hello']);
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
-Route::get('/about/{id}',function($id){
-    return 'about -- '.$id;
-});
-Route::get('/',function(){
-    return view('home');
-});
-Route::get('/news',function(){
-    return view('news');
-});
-Route::get('/about',function(){
-    return view('about');
-});
+require __DIR__.'/auth.php';
+
 Route::get('/post',[PostController::class,'index'])->name('post.index');
 Route::get('/post/create',[PostController::class,'create'])->name('post.create');
 Route::post('/post',[PostController::class, 'store'])->name('post.store');
@@ -50,7 +39,5 @@ Route::get('/post/{id}',[PostController::class, 'show'])->name('post.show');
 Route::delete('/post/{id}',[PostController::class, 'destroy'])->name('post.delete');
 Route::get('/post/{id}/edit',[PostController::class, 'edit'])->name('post.edit');
 Route::patch('/post/{id}',[PostController::class, 'update'])->name('post.update');
-// Route::patch();
 
-
-Route::resource('category', CategoryController::class);
+Route::resource('/category',CategoryController::class);

@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+<x-post-layout>
+    <x-slot:title>
+        文章列表
+    </x-slot:title>
     <h1>文章列表</h1>
     <a href="/post/create">建立文章</a>
     <a href="{{route('post.create')}}">建立文章</a>
@@ -28,5 +23,4 @@
     </div>
     @endforeach
     
-</body>
-</html>
+</x-post-layout>
