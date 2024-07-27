@@ -91,13 +91,15 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         //
-        return $category->id;
 
-        DB::table('categories')->where('id',$category->id)->update([
-            'title' => $request->title,
-            'slug'  => $request->slug,
-            'updated_at' => now()
-        ]);
+        // DB::table('categories')->where('id',$category->id)->update([
+        //     'title' => $request->title,
+        //     'slug'  => $request->slug,
+        //     'updated_at' => now()
+        // ]);
+
+        $category->fill($request->except(['_token','_method']));
+        $category->save();
         return redirect()->route('category.index');
 
     }
@@ -108,7 +110,9 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
-        $category->delete();
+        // $category->delete();
+
+        Category::destroy($category->id);
 
         return redirect()->route('category.index');
 
