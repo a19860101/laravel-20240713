@@ -50,18 +50,20 @@ class CategoryController extends Controller
         // $category->save();
 
         // 方法二
-        $category = new Category;
-        $category -> fill([
-            'title' => $request->title,
-            'slug'  => $request->slug
-        ]);
-        $category->save();
+        // $category = new Category;
+        // $category -> fill([
+        //     'title' => $request->title,
+        //     'slug'  => $request->slug
+        // ]);
+        // $category->save();
 
         // 方法三
         // $category = new Category;
         // $category->fill($request->all());
+        // $category->fill($request->except(['_token']));
         // $category->save();
 
+        Category::create($request->except(['_token']));
         // Category::create($request->all());
 
         return redirect()->route('category.index');
