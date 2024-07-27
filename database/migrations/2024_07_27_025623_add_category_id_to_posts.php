@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             //
-            $table->foreignId('category_id')->constrained();
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
             // $table->unsignedBigInteger('category_id')->after('title')->nullable();
             // $table->foreign('category_id')->references('id')->on('categories');
         });

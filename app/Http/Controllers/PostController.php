@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Models\Post;
 use DB;
 
 class PostController extends Controller
@@ -30,7 +32,8 @@ class PostController extends Controller
     public function create()
     {
         //
-        return view('post.create');
+        $categories = Category::get();
+        return view('post.create',compact('categories'));
     }
 
     /**
@@ -45,13 +48,15 @@ class PostController extends Controller
         // ]);
 
         // 方法二
-        DB::table('posts')->insert([
-            'title' => $request->title,
-            'body'  => $request->body,
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
+        // DB::table('posts')->insert([
+        //     'title' => $request->title,
+        //     'body'  => $request->body,
+        //     'category_id' => $request->category_id,
+        //     'created_at' => now(),
+        //     'updated_at' => now()
+        // ]);
 
+        Post::create($request->except(['_token']));
         return redirect()->route('post.index');
     }
 
