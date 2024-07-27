@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Post;
 use DB;
+use Auth;
 
 class PostController extends Controller
 {
@@ -57,7 +58,12 @@ class PostController extends Controller
         //     'updated_at' => now()
         // ]);
 
-        Post::create($request->except(['_token']));
+        $post = new Post;
+        $post->fill($request->except(['_token']));
+        $post->user_id = Auth::id();
+        $post->save();
+
+        // Post::create($request->except(['_token']));
         return redirect()->route('post.index');
     }
 

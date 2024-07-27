@@ -11,6 +11,9 @@
     <div>
         <h2>{{$post->title}}</h2>
         <div>
+            作者： {{$post->user->name}}
+        </div>
+        <div>
             分類 {{$post->category->title}}
         </div>
         <div>建立時間:{{$post->created_at}}</div>
