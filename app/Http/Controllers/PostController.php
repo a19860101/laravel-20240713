@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $this->authorize('viewAny',Post::class);
+        // $this->authorize('viewAny',Post::class);
         //方法一
         // $posts = DB::select('SELECT * FROM posts');
 
@@ -80,7 +80,7 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        $this->authorize('view',Post::class);
+        // $this->authorize('view',Post::find($id));
         // 方法一
         // $post = DB::select('SELECT * FROM posts WHERE id = ?',[$id]);
 
@@ -97,6 +97,8 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
+        // $this->authorize('view',Post::find($id));
+
         //
         // $post = DB::table('posts')->find($id);
         $post = Post::find($id);
@@ -110,6 +112,7 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $this->authorize('update',Post::find($id));
         // 方法一
         // DB::update('UPDATE posts SET title=?,body=?,updated_at=? WHERE id=?',[
         //     $request->title,
@@ -147,6 +150,7 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
+        $this->authorize('delete',Post::find($id));
         //方法一
         DB::delete('DELETE FROM posts WHERE id = ?',[$id]);
         //方法二

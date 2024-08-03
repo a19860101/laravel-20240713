@@ -15,16 +15,16 @@
                 <hr>
                 <div class="d-flex gap-3">
                     <a href="{{ route('post.index') }}" class="btn btn-info btn-sm">文章列表</a>
-                    @auth
-                    @if (Auth::id() == $post->user->id)
+                    {{-- @auth --}}
+                    {{-- @if (Auth::id() == $post->user->id) --}}
                     <form action="{{ route('post.delete', $post->id) }}" method="post">
                         @csrf
                         @method('delete')
                         <input type="submit" value="刪除" onclick="return confirm('確認刪除？')" class="btn btn-danger btn-sm">
                     </form>
                     <a href="{{ route('post.edit', $post->id) }}" class="btn btn-success btn-sm">編輯文章</a>
-                    @endif
-                    @endauth
+                    {{-- @endif --}}
+                    {{-- @endauth --}}
                 </div>
             </div>
         </div>
