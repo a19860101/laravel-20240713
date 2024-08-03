@@ -41,5 +41,15 @@ Route::delete('/post/{id}',[PostController::class, 'destroy'])->name('post.delet
 Route::get('/post/{id}/edit',[PostController::class, 'edit'])->name('post.edit');
 Route::patch('/post/{id}',[PostController::class, 'update'])->name('post.update');
 
-Route::resource('/category',CategoryController::class);
+// Route::resource('/category',CategoryController::class)->middleware('auth');
+// Route::group(['middleware' => 'auth'],function(){
+//     Route::resource('/category',CategoryController::class)->except('index','store');
+// });
+Route::middleware('auth')->group(function(){
+    Route::resource('/category',CategoryController::class)->except('index','store');
+});
+Route::resource('/category',CategoryController::class)->only('index','store');
+
+
+// Tag
 Route::resource('/tag',TagController::class);

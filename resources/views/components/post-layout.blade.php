@@ -26,9 +26,11 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/post">文章列表</a>
                     </li>
+                    @auth
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/category">分類管理</a>
                     </li>
+                    @endauth
                     @guest
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/login">登入</a>
