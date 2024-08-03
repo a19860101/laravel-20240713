@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use DB;
 use Auth;
 
@@ -59,10 +60,16 @@ class PostController extends Controller
         // ]);
 
         $post = new Post;
-        $post->fill($request->except(['_token']));
+        $post->fill($request->except(['_token','tag']));
         $post->user_id = Auth::id();
         $post->save();
 
+        $tags = explode(',',$request->tag);
+        foreach($tags as $tag){
+            $tagModel = Tag::firstOrCreate(['title' => $tag]);
+            $post->tags()->attach($tagModel);
+        }
+        
         // Post::create($request->except(['_token']));
         return redirect()->route('post.index');
     }
