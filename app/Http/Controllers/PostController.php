@@ -16,6 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny',Post::class);
         //方法一
         // $posts = DB::select('SELECT * FROM posts');
 
@@ -79,6 +80,7 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
+        $this->authorize('view',Post::class);
         // 方法一
         // $post = DB::select('SELECT * FROM posts WHERE id = ?',[$id]);
 
