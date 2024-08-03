@@ -30,6 +30,10 @@ class TagController extends Controller
     public function store(Request $request)
     {
         //
+
+        Tag::create($request->except(['_token']));
+        return redirect()->route('tag.index');
+
     }
 
     /**
