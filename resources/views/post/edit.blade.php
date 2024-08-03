@@ -26,6 +26,10 @@
                 </select>
             </div>
             <div>
+                <label for="">標籤</label>
+                <input type="text" name="tag">
+            </div>
+            <div>
                 <label for="">內文</label>
                 <textarea name="body" id="" cols="30" rows="10">{{$post->body}}</textarea>
             </div>

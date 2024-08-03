@@ -117,12 +117,24 @@ class PostController extends Controller
         
 
         // 方法二
-        DB::table('posts')->where('id',$id)->update([
-            'title' => $request->title,
-            'body' => $request->body,
-            'category_id' => $request->category_id,
-            'updated_at' => now(),
-        ]);
+        // DB::table('posts')->where('id',$id)->update([
+        //     'title' => $request->title,
+        //     'body' => $request->body,
+        //     'category_id' => $request->category_id,
+        //     'updated_at' => now(),
+        // ]);
+
+        $post = Post::find($id);
+        $post->fill($request->except(['_token','_method','tag']));
+        $post->tags()->detach();
+        $post->save();
+
+        $tags = explode(',',$request->tag);
+        foreach($tags as $tag){
+            $tagModel = Tag::firstOrCreate(['title' => $tag]);
+            $post->tags()->attach($tagModel);
+        }
+
         return redirect()->route('post.show',$id);
 
     }
