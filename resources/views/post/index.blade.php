@@ -14,6 +14,18 @@
             作者： {{$post->user->name}}
         </div>
         <div>
+            {{-- @php
+                $tagArray = [];
+                foreach($post->tags as $tag){
+                    $tagArray[] = $tag->title;
+                }
+                
+               $tagStr = implode(',',  $tagArray);
+            @endphp --}}
+            標籤： {{$post->tagStr()}}
+           
+        </div>
+        <div>
             分類 {{$post->category->title}}
         </div>
         <div>建立時間:{{$post->created_at}}</div>

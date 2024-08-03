@@ -27,7 +27,7 @@
             </div>
             <div>
                 <label for="">標籤</label>
-                <input type="text" name="tag">
+                <input type="text" name="tag" value="{{$post->tagStr()}}">
             </div>
             <div>
                 <label for="">內文</label>

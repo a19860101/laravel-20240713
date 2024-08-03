@@ -96,7 +96,8 @@ class PostController extends Controller
     public function edit(string $id)
     {
         //
-        $post = DB::table('posts')->find($id);
+        // $post = DB::table('posts')->find($id);
+        $post = Post::find($id);
         $categories = Category::get();
 
         return view('post.edit',compact('post','categories'));
