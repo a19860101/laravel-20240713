@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use DB;
 use Auth;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
@@ -150,7 +151,20 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
+        // $response = Gate::inspect('delete', Post::find($id));
+
+        // return $response;
+        // if($response->allowed()){
+
+        // }else{
+        //     echo $response->message();
+        // }
+
         $this->authorize('delete',Post::find($id));
+        // if(Auth::user()->cannot('delete',Post::find($id))){
+        //     abort(403,'您沒有權限執行此動作');
+        // }
+
         //方法一
         DB::delete('DELETE FROM posts WHERE id = ?',[$id]);
         //方法二
