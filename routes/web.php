@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,3 +42,4 @@ Route::get('/post/{id}/edit',[PostController::class, 'edit'])->name('post.edit')
 Route::patch('/post/{id}',[PostController::class, 'update'])->name('post.update');
 
 Route::resource('/category',CategoryController::class);
+Route::resource('/tag',TagController::class);
