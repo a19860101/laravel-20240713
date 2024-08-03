@@ -1,40 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>建立文章</h1>
-    <div>
-        {{-- <form action="/post" method="post"> --}}
-        <form action="{{route('post.store')}}" method="post">
-            @csrf
-            <div>
-                <label for="">文章標題</label>
-                <input type="text" name="title">
-            </div>
-            <div>
-                <label for="">分類</label>
-                <select name="category_id" id="">
-                    @foreach($categories as $category)
-                    <option value="{{$category->id}}">{{$category->title}}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div>
-                <label for="">標籤</label>
-                <input type="text" name="tag">
-            </div>
-            <div>
-                <label for="">內文</label>
-                <textarea name="body" id="" cols="30" rows="10"></textarea>
-            </div>
+<x-post-layout>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
 
-            <input type="submit" value="建立文章">
-        </form>
+
+                <h3>建立文章</h3>
+                <div>
+                    {{-- <form action="/post" method="post"> --}}
+                    <form action="{{ route('post.store') }}" method="post">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="" class="form-label">文章標題</label>
+                            <input type="text" name="title" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">分類</label>
+                            <select name="category_id" id=""  class="form-control">
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">標籤</label>
+                            <input type="text" name="tag" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">內文</label>
+                            <textarea name="body" id="" cols="30" rows="10" class="form-control"></textarea>
+                        </div>
+
+                        <input type="submit" value="建立文章" class="btn btn-primary btn-sm">
+                        <input type="button" value="取消" class="btn btn-outline-danger btn-sm" onclick="history.back()">
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-</body>
-</html>
+</x-post-layout>
