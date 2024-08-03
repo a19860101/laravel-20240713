@@ -53,7 +53,9 @@
             </div>
         </div>
     </nav>
-    <h1>???BLOG</h1>
+    <div class="container py-4">
+        <h1 class="text-center">???BLOG</h1>
+    </div>
     <div>
         {{ $slot }}
     </div>
