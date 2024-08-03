@@ -43,6 +43,13 @@
                     </li>
                     @endauth
                 </ul>
+                <ul class="navbar-nav ms-auto">
+                    @auth
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">{{Auth::user()->name}}</a>
+                    </li>
+                    @endauth
+                </ul>
             </div>
         </div>
     </nav>

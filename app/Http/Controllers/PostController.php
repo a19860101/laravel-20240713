@@ -76,7 +76,9 @@ class PostController extends Controller
         // $post = DB::select('SELECT * FROM posts WHERE id = ?',[$id]);
 
         // 方法二
-        $post = DB::table('posts')->find($id);
+        // $post = DB::table('posts')->find($id);
+
+        $post = Post::find($id);
         
         return view('post.show',compact('post'));
     }
