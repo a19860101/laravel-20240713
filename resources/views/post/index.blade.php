@@ -12,7 +12,17 @@
         </div>
     </div>
    
-
+    <div class="container">
+        <div class="row">
+            @can('admin')
+            <h1>管理員</h1>
+            @endcan
+            
+            @can('member')
+            <h1>會員</h1>
+            @endcan
+        </div>
+    </div>
     {{-- {{dd($posts)}} --}}
     <div class="container">
         <div class="row gy-4">
