@@ -46,10 +46,11 @@ class PostPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Post $post): bool
+    public function delete(User $user, Post $post) : Bool
     {
         //
-        return $user->id === $post->user_id ;
+        return $user->id === $post->user_id ? 
+        Response::allow() : Response::deny('您沒有權限');
 
     }
 

@@ -151,16 +151,17 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        // $response = Gate::inspect('delete', Post::find($id));
+        $response = Gate::inspect('delete', Post::find($id));
 
         // return $response;
-        // if($response->allowed()){
+        if($response->allowed()){
 
-        // }else{
-        //     echo $response->message();
-        // }
-
-        $this->authorize('delete',Post::find($id));
+        }else{
+            // echo $response->message();
+            abort(403,'dont');
+        }
+        return;
+        // $this->authorize('delete',Post::find($id));
         // if(Auth::user()->cannot('delete',Post::find($id))){
         //     abort(403,'您沒有權限執行此動作');
         // }
